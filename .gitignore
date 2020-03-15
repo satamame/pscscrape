@@ -1,0 +1,6 @@
+__pycache__
+*.lnk
+/.venv/
+.vscode/
+/hariko/index.csv
+/hariko/scripts/
