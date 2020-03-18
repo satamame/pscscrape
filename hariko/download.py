@@ -1,4 +1,4 @@
-#%%
+# %%
 import os
 import sys
 import urllib
@@ -6,23 +6,23 @@ import time
 import pandas as pd
 import requests
 
-#%% 設定
+# %% 設定
 index_file = 'index.csv'    # インデックスファイル名
 dl_dir = 'scripts'          # 台本保存先ディレクトリ名
 overwrite = False           # ファイルが存在したら上書きするか
 max_count = 500             # 最大ダウンロード数
 interval = 2                # ダウンロード間の待ち時間 (秒)
 
-#%% インデックスファイルを読み込む
+# %% インデックスファイルを読み込む
 df = pd.read_csv(index_file)
 
 # script_id だけにする
 df = df.loc[:, ['script_id', 'url']]
 
-#%% 件数を表示
+# %% 件数を表示
 print(f'Total: {len(df)} scripts')
 
-#%% 保存先ディレクトリのチェック
+# %% 保存先ディレクトリのチェック
 
 # この .py ファイルのディレクトリ のパス
 cur_dir_path = os.path.dirname(os.path.abspath(__file__))
@@ -39,7 +39,7 @@ if os.path.isfile(dl_dir_path):
 if not os.path.isdir(dl_dir_path):
     os.makedirs(dl_dir_path)
 
-#%% 一括ダウンロード
+# %% 一括ダウンロード
 count = 0
 for row in df.itertuples():
     script_id = int(row.script_id)
@@ -77,5 +77,5 @@ for row in df.itertuples():
     if count >= max_count:
         break
 
-#%% 終了メッセージ
+# %% 終了メッセージ
 print(f'ダウンロードが終わりました ({count}件) 。')
