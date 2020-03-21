@@ -38,7 +38,7 @@ class HarikoItem(scrapy.Item):
 ```
 CONCURRENT_REQUESTS = 1
 
-DOWNLOAD_DELAY = 3
+DOWNLOAD_DELAY = 2
 ```
 
 ## スパイダー作成

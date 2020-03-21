@@ -44,12 +44,9 @@ class IndexSpider(scrapy.Spider):
         
         # 次のページへのリンク
         xpath = "//a[text()='次へ->']"
-        next_link = response.xpath(xpath)[0]
+        next_links = response.xpath(xpath)
         
-        # なければ終了
-        if next_link is None:
-            return
-        
-        # 再帰呼び出し
-        next_url = response.urljoin(next_link.attrib['href'])
-        yield scrapy.Request(next_url, callback=self.parse)
+        # あれば再帰呼び出し
+        if next_links:
+            url = response.urljoin(next_links[0].attrib['href'])
+            yield scrapy.Request(url, callback=self.parse)
