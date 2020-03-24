@@ -46,3 +46,7 @@ for set_dir in datasets:
 # %% 可視化する
 (x, y) = zip(*params)
 plt.scatter(x, y)
+
+# %% y を行数ではなく割合で表示
+y = [y/x for (x, y) in params]
+plt.scatter(x, y, alpha=0.3)

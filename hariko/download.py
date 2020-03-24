@@ -16,7 +16,7 @@ interval = 2                # ダウンロード間の待ち時間 (秒)
 # %% インデックスファイルを読み込む
 df = pd.read_csv(index_file)
 
-# script_id だけにする
+# script_id と url だけにする
 df = df.loc[:, ['script_id', 'url']]
 
 # %% 件数を表示
