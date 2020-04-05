@@ -257,6 +257,7 @@ class IndexSpider(scrapy.Spider):
 
     def parse(self, response):
         pass
+```
 
 ----
 
@@ -366,7 +367,7 @@ for detail_link in response.xpath(xpath):
     # 著者名
     author = detail_link.xpath(
         "parent::td/following-sibling::th/a/text()").get()
-
+```
 
 ----
 
@@ -390,7 +391,7 @@ for detail_link in response.xpath(xpath):
     )
     
     yield item
-
+```
 
 ----
 
@@ -580,7 +581,7 @@ for row in df.itertuples():
     cgi_path = f'scriptdl.cgi/{script_id}.txt'
     action_url = urllib.parse.urljoin(row.url, cgi_path)
     data = {'script': str(script_id), 'type': 'win'}
-
+```
 
 ----
 
@@ -602,9 +603,10 @@ for row in df.itertuples():
     response.encoding = 'sjis'
     
     # テキストを保存する
-    with open(save_path, mode='w', encoding='utf-8') as f:
-        f.write(response.text)
-
+    with open(save_path, mode='w', encoding='utf-8',
+            newline='') as f:
+        f.write(requests.text)
+```
 
 ----
 
@@ -656,7 +658,7 @@ for row in df.itertuples():
 ダウンロードした各台本について、「括弧を含む行」の割合がどれくらいか、数えてみました
 横軸が全行数、縦軸が「括弧を含む行」の割合です
 
-![](https://cdn.slideship.com/users/CB4haVXqcoujFL1byXTcv3/img/2020/03/JhoEVuFyoCwik7ARMQn1uZ.jpg =50%x)
+![](https://cdn.slideship.com/users/CB4haVXqcoujFL1byXTcv3/img/2020/04/8vdNy9yRpf73THHyTTmmR1.jpg =50%x)
 
 ト書きの量や、一個のセリフが何行にまたがるか等にもよりますが、「セリフに括弧を使っているか」の判断材料にできそうです
 

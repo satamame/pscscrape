@@ -67,7 +67,7 @@ for row in df.itertuples():
     response.encoding = 'sjis'
     
     # テキストを保存する
-    with open(save_path, mode='w', encoding='utf-8') as f:
+    with open(save_path, mode='w', encoding='utf-8', newline='') as f:
         f.write(response.text)
     
     count += 1
