@@ -4,3 +4,4 @@ __pycache__
 .vscode/
 /hariko/index.csv
 /hariko/scripts/
+/hariko/cleaned/
